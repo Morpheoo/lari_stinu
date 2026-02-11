@@ -1,0 +1,81 @@
+1. PRD (Product Requirements Document)
+
+Objetivo: Desarrollar la plataforma Lari Stinu, una aplicación de intermediación comercial para la venta de ropa artesanal del Istmo de Tehuantepec, que conecta a artesanos locales con un mercado nacional e internacional, operando bajo un modelo de comercio justo.
+
+Funcionalidades Clave:
+
+Catálogo de productos:
+
+Subida de productos por los artesanos (fotos, descripciones, precios, autenticidad cultural).
+
+Categorías de productos (tipos de ropa, colores, tallas).
+
+Filtros de búsqueda (por precio, talla, color, tipo de prenda).
+
+Carrito de compras:
+
+Añadir productos al carrito y proceder a la compra.
+
+Pasarela de pagos:
+
+Integración con PayPal y tarjetas de crédito.
+
+Logística de envíos:
+
+Integración con empresas de mensajería (DHL, FedEx).
+
+Rastrear envíos en tiempo real.
+
+Perfiles de artesanos:
+
+Historia y detalles de cada artesano.
+
+Mostrar los talleres y procesos artesanales.
+
+Sistema de valoraciones:
+
+Reseñas y valoraciones de productos y artesanos.
+
+Comercio justo:
+
+Mostrar transparencia en las transacciones y asegurar que los artesanos reciban pagos justos.
+
+Flujos de Usuario:
+
+Usuario (Comprador):
+
+Registra cuenta o inicia sesión.
+
+Navega por el catálogo, añade productos al carrito.
+
+Procede al pago y recibe confirmación de envío.
+
+Valora productos y artesanos tras la compra.
+
+Artesano:
+
+Registra cuenta.
+
+Sube productos, describe procesos y precios.
+
+Administra pedidos y envíos.
+
+Recibe pagos y puede ver reseñas.
+
+KPIs:
+
+Tasa de conversión de visitas a compras.
+
+Número de artesanos registrados.
+
+Satisfacción de los usuarios (valoraciones).
+
+Tiempos de envío (eficiencia logística).
+
+Líneas de tiempo:
+
+Fase de diseño: 2 semanas.
+
+Desarrollo del MVP: 4-6 semanas.
+
+Testing y lanzamiento: 2 semanas.

@@ -1,0 +1,47 @@
+3. Design Document
+Objetivo: Crear un diseño atractivo y funcional que represente la identidad de Lari Stinu, resaltando la autenticidad cultural de los productos artesanales mientras facilita la navegación y compra.
+UI/UX:
+
+Pantallas principales:
+
+Pantalla de inicio: Mostrar productos destacados, categorías y búsquedas.
+
+Pantalla de producto: Detalles de cada producto (foto, descripción, precio, información del artesano, etc.).
+
+Pantalla de carrito: Resumen de productos, total y opción de pagar.
+
+Pantalla de perfil del artesano: Historia y detalles del artesano, productos vendidos, valoraciones.
+
+Pantalla de pagos: Detalles de facturación, pasarela de pago (Stripe/PayPal).
+
+Pantalla de envío: Opciones de envío y tracking.
+
+Paleta de colores:
+
+Tonos vibrantes, inspirados en el arte tradicional del Istmo (rojos, verdes, rosas).
+
+Uso de colores cálidos y tierra para conectar con la cultura local.
+
+Tipografía:
+
+DM Serif Display para encabezados (referencia a lo tradicional y elegante).
+
+Montserrat Bold para textos secundarios y botones (moderno y legible).
+
+Iconografía:
+
+Estilo simple y claro, con iconos que representen la cultura local.
+
+Uso de íconos para el carrito de compras, favoritos, filtros, etc.
+
+Wireframes: Crear wireframes para todas las pantallas mencionadas, priorizando la navegación fluida y accesible.
+
+Interacciones:
+
+Navegación sencilla: El flujo de compra debe ser intuitivo.
+
+Animações: Transiciones suaves entre pantallas y botones.
+
+Accesibilidad:
+
+Asegurarse de que la app sea accesible para todos los usuarios, con opciones para aumentar el tamaño de texto y compatibilidad con lectores de pantalla.

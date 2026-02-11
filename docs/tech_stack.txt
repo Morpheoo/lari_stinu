@@ -1,0 +1,48 @@
+2. Tech Stack
+Frontend:
+
+Framework: React Native (para aplicaciones móviles en iOS y Android).
+
+Librerías:
+
+Redux para el manejo del estado.
+
+React Navigation para la navegación.
+
+Axios para las solicitudes HTTP.
+
+React Native Paper para los componentes de UI.
+
+Backend:
+
+Framework: Node.js con Express.js.
+
+Base de datos: MongoDB (base de datos no relacional para escalabilidad).
+
+Autenticación: JWT (JSON Web Tokens) para la autenticación de usuarios.
+
+Pasarela de pago: Stripe y PayPal para la integración de pagos.
+
+Logística: APIs de servicios de envío como FedEx, DHL, Estafeta.
+
+Infraestructura:
+
+Cloud Hosting: AWS (Amazon Web Services) o Firebase.
+
+Almacenamiento de imágenes: Cloudinary (para subir y manejar imágenes de productos).
+
+Autenticación: Firebase Auth o Auth0 para gestionar usuarios de manera segura.
+
+Herramientas de Testing:
+
+Frontend Testing: Jest y Enzyme.
+
+Backend Testing: Mocha o Jest.
+
+Integración Continua (CI): GitHub Actions o CircleCI.
+
+Gestión de código:
+
+Control de versiones: GitHub.
+
+CI/CD: Travis CI o GitHub Actions.

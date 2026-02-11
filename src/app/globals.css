@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors - Isthmus Inspired */
+  --color-primary: #D94A4A; /* Rich Red (Huipil) */
+  --color-secondary: #E8B931; /* Golden Yellow (Jewelry) */
+  --color-accent: #3A8C7D; /* Teal/Green (Nature) */
+  --color-background: #FDFBF7; /* Off-white/Cream (Cotton) */
+  --color-text: #2D2D2D; /* Dark Charcoal (Legibility) */
+  --color-muted: #F2EFE9; /* Light Beige (Secondary backgrounds) */
+  
+  /* Semantic Colors */
+  --color-success: #2E7D32;
+  --color-warning: #ED6C02;
+  --color-error: #D32F2F;
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-background: var(--color-background);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+
+  --font-heading: 'var(--font-dm-serif)', serif;
+  --font-body: 'var(--font-montserrat)', sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
