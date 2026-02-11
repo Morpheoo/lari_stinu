@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lari Stinu
 
-## Getting Started
+**Moda con Alma del Istmo de Tehuantepec.**
 
-First, run the development server:
+Lari Stinu es una plataforma digital de comercio justo diseñada para conectar a los artesanos locales de la región del Istmo de Tehuantepec con compradores nacionales e internacionales. Nuestro objetivo es preservar la cultura, garantizar pagos justos y ofrecer productos textiles auténticos y de alta calidad.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Características Principales
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+*   **Catálogo Digital:** Una vitrina elegante para huipiles, trajes de gala, joyería y accesorios.
+*   **Comercio Justo:** Transparencia total en los precios para asegurar que los artesanos reciban el valor real de su trabajo.
+*   **Historias Vivas:** Perfiles de artesanos que conectan al comprador con el origen de cada prenda.
+*   **Autenticidad:** Sistema de insignias para verificar la procedencia y técnica de los productos.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tecnologías
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Este proyecto está construido con lo último en desarrollo web moderno:
 
-## Learn More
+*   **Frontend:** [Next.js 14+](https://nextjs.org/) (React)
+*   **Estilos:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Animaciones:** [Framer Motion](https://www.framer.com/motion/)
+*   **Iconos:** [Lucide React](https://lucide.dev/)
+*   **Fuente:** DM Serif Display & Montserrat (Google Fonts)
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Instalación y Desarrollo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clonar el repositorio:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    git clone https://github.com/Morpheoo/lari_stinu.git
+    cd lari_stinu
+    ```
 
-## Deploy on Vercel
+2.  **Instalar dependencias:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3.  **Iniciar el servidor de desarrollo:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
+
+## 🤝 Contribución
+
+Este proyecto es de código abierto con el fin de apoyar a la comunidad artesanal. Las contribuciones son bienvenidas.
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
