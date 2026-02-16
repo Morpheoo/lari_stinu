@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+    <defs>
+        <pattern id="grid-sombrero-palma" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fff" stroke-width="0.3" opacity="0.15"/>
+        </pattern>
+    </defs>
+    <rect width="600" height="800" fill="#A1887F"/>
+    <rect width="600" height="800" fill="url(#grid-sombrero-palma)"/>
+    <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#fff" font-weight="bold" opacity="0.9">Sombrero Palma</text>
+    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#fff" opacity="0.5">Lari Stinu • Foto pendiente</text>
+</svg>

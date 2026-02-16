@@ -4,13 +4,32 @@ import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-// Tipos Mock para los filtros
-const categories = ["Huipil", "Ropa", "Joyería", "Accesorios"]
-const prices = ["$0 - $500", "$500 - $1500", "$1500 - $3000", "$3000+"]
-const artisans = ["María López", "Juana Martínez", "Taller Hermanos García"]
+const categories = ["Huipil", "Ropa", "Joyería", "Accesorios", "Hogar"]
+const prices = ["$0 - $500", "$500 - $1500", "$1500 - $3000", "$3000 - $5000", "$5000+"]
+const locations = [
+    "Juchitán de Zaragoza",
+    "Santo Domingo Tehuantepec",
+    "San Mateo del Mar",
+    "Ixtaltepec",
+    "San Blas Atempa",
+    "Unión Hidalgo",
+]
+const artisans = [
+    "María López Pineda",
+    "Juana Martínez Regalado",
+    "Taller Hermanos García",
+    "Rosa Elena Cruz",
+    "Petrona Ruiz Jiménez",
+    "Elena Santiago Vásquez",
+    "Félix Montaño López",
+    "Carmen Toledo Pineda",
+    "Lucía Orozco Fuentes",
+    "Ángel Zárate Pineda",
+]
 
 export function ProductFilters() {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+    const [showAllArtisans, setShowAllArtisans] = useState(false)
 
     const toggleCategory = (category: string) => {
         setSelectedCategories(prev =>
@@ -19,6 +38,8 @@ export function ProductFilters() {
                 : [...prev, category]
         )
     }
+
+    const visibleArtisans = showAllArtisans ? artisans : artisans.slice(0, 5)
 
     return (
         <div className="space-y-8">
@@ -38,7 +59,7 @@ export function ProductFilters() {
                                 {selectedCategories.includes(category) && <Check className="h-3 w-3" />}
                             </button>
                             <label
-                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                                className="text-sm font-medium leading-none cursor-pointer"
                                 onClick={() => toggleCategory(category)}
                             >
                                 {category}
@@ -48,7 +69,7 @@ export function ProductFilters() {
                 </div>
             </div>
 
-            {/* Price Range - Visual Mock */}
+            {/* Price Range */}
             <div>
                 <h3 className="font-heading text-lg font-bold mb-4">Precio</h3>
                 <div className="space-y-2">
@@ -61,17 +82,38 @@ export function ProductFilters() {
                 </div>
             </div>
 
-            {/* Artisans - Visual Mock */}
+            {/* Locations */}
+            <div>
+                <h3 className="font-heading text-lg font-bold mb-4">Ubicación</h3>
+                <div className="space-y-2">
+                    {locations.map((loc) => (
+                        <div key={loc} className="flex items-center space-x-2">
+                            <div className="h-4 w-4 rounded border border-gray-300" />
+                            <span className="text-sm">{loc}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Artisans */}
             <div>
                 <h3 className="font-heading text-lg font-bold mb-4">Artesanos</h3>
                 <div className="space-y-2">
-                    {artisans.map((artisan) => (
+                    {visibleArtisans.map((artisan) => (
                         <div key={artisan} className="flex items-center space-x-2">
                             <div className="h-4 w-4 rounded border border-gray-300" />
                             <span className="text-sm">{artisan}</span>
                         </div>
                     ))}
                 </div>
+                {artisans.length > 5 && (
+                    <button
+                        onClick={() => setShowAllArtisans(!showAllArtisans)}
+                        className="mt-2 text-sm text-[var(--color-primary)] hover:underline"
+                    >
+                        {showAllArtisans ? "Ver menos" : `Ver todos (${artisans.length})`}
+                    </button>
+                )}
             </div>
 
             <Button variant="outline" className="w-full">
