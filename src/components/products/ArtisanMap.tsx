@@ -7,7 +7,6 @@ interface ArtisanMapProps {
 
 export function ArtisanMap({ artisan }: ArtisanMapProps) {
     const { lat, lng } = artisan.coordinates;
-    const mapQuery = encodeURIComponent(artisan.location);
     const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
     const embedUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=13&output=embed`;
 

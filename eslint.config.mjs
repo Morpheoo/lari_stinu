@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "fetch_unsplash.js",
+    "generate_placeholders.js",
   ]),
 ]);
 

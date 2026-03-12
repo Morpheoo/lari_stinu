@@ -23,8 +23,8 @@
   --color-text: var(--color-text);
   --color-muted: var(--color-muted);
 
-  --font-heading: 'var(--font-dm-serif)', serif;
-  --font-body: 'var(--font-montserrat)', sans-serif;
+  --font-heading: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: "Trebuchet MS", "Segoe UI", sans-serif;
 }
 
 body {

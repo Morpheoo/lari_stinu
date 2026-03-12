@@ -1,61 +1,59 @@
-import { Header } from "@/components/layout/Header"
-import { ArtisanMap } from "@/components/products/ArtisanMap"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { artisanProfiles, getProductsByArtisanId, getReviewsByArtisanId } from "@/data/artisans"
-import { ArrowLeft, BadgeCheck, Clock, MapPin, ShoppingBag, Star, ThumbsUp, Award } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, Award, BadgeCheck, MapPin, ShoppingBag, Star, ThumbsUp } from "lucide-react";
+import { Header } from "@/components/layout/Header";
+import { ArtisanMap } from "@/components/products/ArtisanMap";
+import { Badge } from "@/components/ui/badge";
+import { artisanProfiles, getProductsByArtisanId, getReviewsByArtisanId } from "@/data/artisans";
+import { getArtisanMetrics, getResolvedReviewProductName } from "@/lib/catalog";
 
 interface PageProps {
-    params: Promise<{ slug: string }>
+    params: Promise<{ slug: string }>;
 }
 
 function StarRating({ rating }: { rating: number }) {
     return (
         <div className="flex items-center gap-0.5">
-            {[1, 2, 3, 4, 5].map(i => (
+            {[1, 2, 3, 4, 5].map((value) => (
                 <Star
-                    key={i}
-                    className={`h-4 w-4 ${i <= rating ? "fill-yellow-400 text-yellow-400" : i - 0.5 <= rating ? "fill-yellow-400/50 text-yellow-400" : "text-gray-300"}`}
+                    key={value}
+                    className={`h-4 w-4 ${value <= rating ? "fill-yellow-400 text-yellow-400" : value - 0.5 <= rating ? "fill-yellow-400/50 text-yellow-400" : "text-gray-300"}`}
                 />
             ))}
         </div>
-    )
+    );
 }
 
 export default async function ArtisanProfilePage({ params }: PageProps) {
-    const { slug } = await params
-    const artisan = artisanProfiles.find(a => a.slug === slug)
+    const { slug } = await params;
+    const artisan = artisanProfiles.find((entry) => entry.slug === slug);
 
     if (!artisan) {
-        notFound()
+        notFound();
     }
 
-    const artisanProducts = getProductsByArtisanId(artisan.id)
-    const artisanReviews = getReviewsByArtisanId(artisan.id)
+    const artisanProducts = getProductsByArtisanId(artisan.id);
+    const artisanReviews = getReviewsByArtisanId(artisan.id);
+    const metrics = getArtisanMetrics(artisan.id);
 
     return (
         <div className="min-h-screen bg-[var(--color-background)]">
             <Header />
 
             <main className="container mx-auto px-4 py-8">
-                {/* Back Navigation */}
                 <div className="mb-6">
                     <Link
                         href="/artisans"
                         className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-[var(--color-primary)]"
                     >
                         <ArrowLeft className="mr-2 h-4 w-4" />
-                        Volver a Artesanos
+                        Volver a artesanos
                     </Link>
                 </div>
 
-                {/* Hero Profile Section */}
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
-                        {/* Left: Image */}
                         <div className="relative h-80 lg:h-auto bg-gray-100">
                             <Image
                                 src={artisan.image}
@@ -66,7 +64,6 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                             />
                         </div>
 
-                        {/* Right: Info */}
                         <div className="lg:col-span-2 p-8">
                             <div className="flex items-start justify-between mb-4">
                                 <div>
@@ -92,17 +89,16 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                                 {artisan.bio}
                             </p>
 
-                            {/* Stats Grid */}
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                                 <div className="bg-gray-50 rounded-xl p-4 text-center">
                                     <div className="flex items-center justify-center gap-1 mb-1">
                                         <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                                        <span className="text-2xl font-bold text-gray-900">{artisan.rating}</span>
+                                        <span className="text-2xl font-bold text-gray-900">{metrics.averageRating}</span>
                                     </div>
                                     <p className="text-xs text-gray-500">Calificación</p>
                                 </div>
                                 <div className="bg-gray-50 rounded-xl p-4 text-center">
-                                    <p className="text-2xl font-bold text-gray-900">{artisan.totalReviews}</p>
+                                    <p className="text-2xl font-bold text-gray-900">{metrics.reviewCount}</p>
                                     <p className="text-xs text-gray-500">Reseñas</p>
                                 </div>
                                 <div className="bg-gray-50 rounded-xl p-4 text-center">
@@ -115,28 +111,26 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                                 </div>
                             </div>
 
-                            {/* Techniques */}
                             <div>
-                                <h3 className="text-sm font-bold text-gray-900 mb-2">Técnicas que domina</h3>
+                                <h2 className="text-sm font-bold text-gray-900 mb-2">Técnicas que domina</h2>
                                 <div className="flex flex-wrap gap-2">
-                                    {artisan.techniques.map(tech => (
-                                        <Badge key={tech} variant="outline" className="text-xs bg-white">
-                                            {tech}
+                                    {artisan.techniques.map((technique) => (
+                                        <Badge key={technique} variant="outline" className="text-xs bg-white">
+                                            {technique}
                                         </Badge>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Trust Badges */}
                             {artisan.isVerified && (
-                                <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-100">
+                                <div className="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-100">
                                     <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 px-3 py-1.5 rounded-full">
                                         <BadgeCheck className="h-4 w-4" />
-                                        Artesano Verificado desde {artisan.verifiedSince}
+                                        Artesano verificado desde {artisan.verifiedSince}
                                     </div>
                                     <div className="flex items-center gap-2 text-sm text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full">
                                         <Award className="h-4 w-4" />
-                                        Técnica Auténtica
+                                        Técnica auténtica
                                     </div>
                                 </div>
                             )}
@@ -144,10 +138,8 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                     </div>
                 </div>
 
-                {/* Location Map */}
                 <ArtisanMap artisan={artisan} />
 
-                {/* Products Section */}
                 <section className="mt-12">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="font-heading text-2xl font-bold text-gray-900">
@@ -158,7 +150,7 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                         </Link>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {artisanProducts.map(product => (
+                        {artisanProducts.map((product) => (
                             <Link
                                 key={product.id}
                                 href={`/catalog/${product.id}`}
@@ -189,29 +181,28 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                     </div>
                 </section>
 
-                {/* Reviews Section */}
                 <section className="mt-16 mb-8">
                     <div className="flex items-center justify-between mb-8">
                         <div>
                             <h2 className="font-heading text-2xl font-bold text-gray-900">
-                                Reseñas de Clientes
+                                Reseñas de clientes
                             </h2>
                             <div className="flex items-center gap-2 mt-2">
-                                <StarRating rating={artisan.rating} />
-                                <span className="font-semibold text-gray-900">{artisan.rating}</span>
+                                <StarRating rating={metrics.averageRating} />
+                                <span className="font-semibold text-gray-900">{metrics.averageRating}</span>
                                 <span className="text-gray-400">·</span>
-                                <span className="text-sm text-gray-500">{artisanReviews.length} reseñas</span>
+                                <span className="text-sm text-gray-500">{metrics.reviewCount} reseñas</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="space-y-6">
-                        {artisanReviews.map(review => (
+                        {artisanReviews.map((review) => (
                             <div key={review.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                                 <div className="flex items-start justify-between mb-3">
                                     <div className="flex items-center gap-3">
                                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-amber-500 text-white font-bold text-sm">
-                                            {review.customerName.split(" ").map(n => n[0]).join("")}
+                                            {review.customerName.split(" ").map((name) => name[0]).join("")}
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-2">
@@ -223,20 +214,22 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                                                     </span>
                                                 )}
                                             </div>
-                                            <p className="text-xs text-gray-400">{review.customerLocation} · {new Date(review.date).toLocaleDateString("es-MX", { year: "numeric", month: "long", day: "numeric" })}</p>
+                                            <p className="text-xs text-gray-400">
+                                                {review.customerLocation} · {new Date(review.date).toLocaleDateString("es-MX", { year: "numeric", month: "long", day: "numeric" })}
+                                            </p>
                                         </div>
                                     </div>
                                     <StarRating rating={review.rating} />
                                 </div>
 
-                                {review.productName && (
+                                {getResolvedReviewProductName(review) && (
                                     <p className="text-xs text-gray-500 mb-2 flex items-center gap-1">
                                         <ShoppingBag className="h-3 w-3" />
-                                        Producto: <span className="font-medium text-gray-700">{review.productName}</span>
+                                        Producto: <span className="font-medium text-gray-700">{getResolvedReviewProductName(review)}</span>
                                     </p>
                                 )}
 
-                                <h4 className="font-semibold text-gray-900 text-sm mb-2">{review.title}</h4>
+                                <h3 className="font-semibold text-gray-900 text-sm mb-2">{review.title}</h3>
                                 <p className="text-sm text-gray-600 leading-relaxed">{review.comment}</p>
 
                                 <div className="flex items-center gap-4 mt-4 pt-3 border-t border-gray-50">
@@ -251,5 +244,5 @@ export default async function ArtisanProfilePage({ params }: PageProps) {
                 </section>
             </main>
         </div>
-    )
+    );
 }

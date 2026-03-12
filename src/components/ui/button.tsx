@@ -1,9 +1,6 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/lib/utils"
-// Note: Radix Slot is optional, using simple button for now if not installed, 
-// but sticking to standard pattern where possible. 
-// actually I didn't install radix slot, so I will remove it for now to avoid errors.
 
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,7 +11,8 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant = "primary", size = "default", asChild = false, ...props }, ref) => {
-        // light-weight cva alternative
+        const Comp = asChild ? Slot : "button"
+
         const variants = {
             primary: "bg-[var(--color-primary)] text-white hover:opacity-90 shadow-md",
             secondary: "bg-[var(--color-secondary)] text-white hover:opacity-90 shadow-sm",
@@ -31,7 +29,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         }
 
         return (
-            <button
+            <Comp
                 className={cn(
                     "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
                     variants[variant],

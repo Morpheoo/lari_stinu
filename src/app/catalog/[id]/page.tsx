@@ -1,50 +1,66 @@
-import { Header } from "@/components/layout/Header"
-import { ArtisanMap } from "@/components/products/ArtisanMap"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { products } from "@/data/products"
-import { ArrowLeft, Check, Heart, MapPin, Share2, ShoppingBag, Star } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
+"use client";
 
-interface PageProps {
-    params: Promise<{ id: string }>
-}
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound, useParams } from "next/navigation";
+import { ArrowLeft, Check, MapPin, ShoppingBag, Star } from "lucide-react";
+import { Header } from "@/components/layout/Header";
+import { ArtisanMap } from "@/components/products/ArtisanMap";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { getArtisanById } from "@/data/artisans";
+import { getProductById } from "@/lib/catalog";
 
-export default async function ProductPage({ params }: PageProps) {
-    const { id } = await params
-    const product = products.find((p) => p.id === id)
+export default function ProductPage() {
+    const params = useParams<{ id: string }>();
+    const product = getProductById(params.id);
+    const { addItem } = useCart();
+    const [isAdding, setIsAdding] = useState(false);
 
     if (!product) {
-        notFound()
+        notFound();
     }
+
+    const artisanProfile = getArtisanById(product.artisan.id);
+
+    const handleAddToCart = () => {
+        setIsAdding(true);
+        addItem({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            color: product.color,
+        });
+
+        window.setTimeout(() => setIsAdding(false), 500);
+    };
 
     return (
         <div className="min-h-screen bg-[var(--color-background)]">
             <Header />
 
             <main className="container mx-auto px-4 py-8">
-                {/* Breadcrumb / Back Navigation */}
                 <div className="mb-6">
                     <Link
                         href="/catalog"
                         className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-[var(--color-primary)]"
                     >
                         <ArrowLeft className="mr-2 h-4 w-4" />
-                        Volver al Catálogo
+                        Volver al catálogo
                     </Link>
                 </div>
 
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-                    {/* Left Column: Image Gallery */}
                     <div className="space-y-4">
-                        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-gray-100 shadow-md">
+                        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2rem] bg-gray-100 shadow-md">
                             {product.isVerified && (
                                 <div className="absolute top-4 left-4 z-10">
                                     <Badge variant="gold" className="bg-yellow-500 text-white border-none shadow-sm text-sm py-1 px-3">
                                         <Star className="mr-1 h-3 w-3 fill-current" />
-                                        Auténtico & Verificado
+                                        Auténtico y verificado
                                     </Badge>
                                 </div>
                             )}
@@ -56,13 +72,15 @@ export default async function ProductPage({ params }: PageProps) {
                                 priority
                             />
                         </div>
-                        {/* Thumbnail placeholders for future gallery */}
                         <div className="grid grid-cols-4 gap-4">
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className={`relative aspect-square cursor-pointer overflow-hidden rounded-lg bg-gray-100 ${i === 1 ? 'ring-2 ring-[var(--color-primary)]' : 'opacity-70 hover:opacity-100'}`}>
+                            {[1, 2, 3, 4].map((view) => (
+                                <div
+                                    key={view}
+                                    className={`relative aspect-square overflow-hidden rounded-2xl bg-gray-100 ${view === 1 ? "ring-2 ring-[var(--color-primary)]" : "opacity-70"}`}
+                                >
                                     <Image
                                         src={product.image}
-                                        alt={`Vista ${i}`}
+                                        alt={`Vista ${view} de ${product.name}`}
                                         fill
                                         className="object-cover"
                                     />
@@ -71,7 +89,6 @@ export default async function ProductPage({ params }: PageProps) {
                         </div>
                     </div>
 
-                    {/* Right Column: Product Details */}
                     <div className="flex flex-col">
                         <div className="mb-2">
                             <span className="text-sm font-medium text-[var(--color-primary)] tracking-wide uppercase">
@@ -90,74 +107,68 @@ export default async function ProductPage({ params }: PageProps) {
                             <p>{product.description}</p>
                         </div>
 
-                        {/* Product Meta: Color, Material */}
                         <div className="grid grid-cols-2 gap-4 mb-8 border-y border-gray-200 py-4">
                             <div>
-                                <h3 className="text-sm font-bold text-gray-900 mb-1">Color</h3>
+                                <h2 className="text-sm font-bold text-gray-900 mb-1">Color</h2>
                                 <p className="text-gray-600">{product.color}</p>
                             </div>
                             {product.material && (
                                 <div>
-                                    <h3 className="text-sm font-bold text-gray-900 mb-1">Material</h3>
+                                    <h2 className="text-sm font-bold text-gray-900 mb-1">Material</h2>
                                     <p className="text-gray-600">{product.material}</p>
                                 </div>
                             )}
                             {product.measurements && (
                                 <div className="col-span-2 mt-2">
-                                    <h3 className="text-sm font-bold text-gray-900 mb-1">Medidas</h3>
+                                    <h2 className="text-sm font-bold text-gray-900 mb-1">Medidas</h2>
                                     <p className="text-gray-600">{product.measurements}</p>
                                 </div>
                             )}
                         </div>
 
-                        {/* Actions */}
                         <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                            <Button size="lg" className="flex-1 text-base h-12">
+                            <Button
+                                size="lg"
+                                className="flex-1 text-base h-12"
+                                onClick={handleAddToCart}
+                                disabled={isAdding}
+                            >
                                 <ShoppingBag className="mr-2 h-5 w-5" />
-                                Agregar al Carrito
+                                {isAdding ? "Agregado" : "Agregar al carrito"}
                             </Button>
-                            <Button variant="outline" size="lg" className="w-full sm:w-auto h-12">
-                                <Heart className="mr-2 h-5 w-5" />
-                                Guardar
-                            </Button>
-                            <Button variant="ghost" size="icon" className="h-12 w-12 border">
-                                <Share2 className="h-5 w-5" />
-                            </Button>
+                            {artisanProfile && (
+                                <Button asChild variant="outline" size="lg" className="h-12">
+                                    <Link href={`/artisans/${artisanProfile.slug}`}>Ver artesano</Link>
+                                </Button>
+                            )}
                         </div>
 
-                        {/* Artisan Story Section */}
-                        <div className="mt-auto bg-[#F9FAFB] rounded-xl p-6 border border-gray-100">
+                        <div className="mt-auto bg-[#F9FAFB] rounded-[2rem] p-6 border border-gray-100">
                             <div className="flex items-start gap-4">
                                 <div className="relative h-16 w-16 overflow-hidden rounded-full bg-gray-200 flex-shrink-0 border-2 border-white shadow-sm">
-                                    {/* Placeholder for artisan avatar if image is missing */}
-                                    {product.artisan.image ? (
-                                        <Image src={product.artisan.image} alt={product.artisan.name} fill className="object-cover" />
-                                    ) : (
-                                        <div className="flex h-full w-full items-center justify-center bg-[var(--color-primary)] text-white font-bold text-xl">
-                                            {product.artisan.name.charAt(0)}
-                                        </div>
-                                    )}
+                                    <Image src={product.artisan.image} alt={product.artisan.name} fill className="object-cover" />
                                 </div>
                                 <div>
-                                    <h3 className="font-heading text-xl font-bold text-gray-900 mb-1">
+                                    <h2 className="font-heading text-xl font-bold text-gray-900 mb-1">
                                         Hecho por {product.artisan.name}
-                                    </h3>
+                                    </h2>
                                     <div className="flex items-center text-gray-500 text-sm mb-3">
                                         <MapPin className="h-4 w-4 mr-1" />
                                         {product.artisan.location}
                                     </div>
                                     <p className="text-sm text-gray-600 italic">
-                                        "{product.artisan.story}"
+                                        &quot;{product.artisan.story}&quot;
                                     </p>
-                                    <Button variant="link" className="px-0 mt-2 text-[var(--color-primary)]">
-                                        Ver perfil del artesano &rarr;
-                                    </Button>
+                                    {artisanProfile && (
+                                        <Button asChild variant="link" className="px-0 mt-2 text-[var(--color-primary)]">
+                                            <Link href={`/artisans/${artisanProfile.slug}`}>Ver perfil del artesano</Link>
+                                        </Button>
+                                    )}
                                 </div>
                             </div>
                         </div>
 
-                        {/* Value Props */}
-                        <div className="grid grid-cols-2 gap-4 mt-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                             <div className="flex items-center gap-2 text-sm text-gray-600">
                                 <Check className="h-4 w-4 text-green-500" />
                                 <span>Envío seguro a todo México</span>
@@ -168,12 +179,10 @@ export default async function ProductPage({ params }: PageProps) {
                             </div>
                         </div>
 
-                        {/* Artisan Location Map */}
                         <ArtisanMap artisan={product.artisan} />
-
                     </div>
                 </div>
             </main>
         </div>
-    )
+    );
 }

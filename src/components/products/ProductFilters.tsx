@@ -1,124 +1,128 @@
-"use client"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
-import { cn } from "@/lib/utils"
+"use client";
 
-const categories = ["Huipil", "Ropa", "Joyería", "Accesorios", "Hogar"]
-const prices = ["$0 - $500", "$500 - $1500", "$1500 - $3000", "$3000 - $5000", "$5000+"]
-const locations = [
-    "Juchitán de Zaragoza",
-    "Santo Domingo Tehuantepec",
-    "San Mateo del Mar",
-    "Ixtaltepec",
-    "San Blas Atempa",
-    "Unión Hidalgo",
-]
-const artisans = [
-    "María López Pineda",
-    "Juana Martínez Regalado",
-    "Taller Hermanos García",
-    "Rosa Elena Cruz",
-    "Petrona Ruiz Jiménez",
-    "Elena Santiago Vásquez",
-    "Félix Montaño López",
-    "Carmen Toledo Pineda",
-    "Lucía Orozco Fuentes",
-    "Ángel Zárate Pineda",
-]
+import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-export function ProductFilters() {
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-    const [showAllArtisans, setShowAllArtisans] = useState(false)
+interface ProductFiltersProps {
+    categories: string[];
+    locations: string[];
+    artisans: string[];
+    selectedCategories: string[];
+    selectedLocation: string;
+    selectedArtisan: string;
+    onToggleCategory: (category: string) => void;
+    onSelectLocation: (location: string) => void;
+    onSelectArtisan: (artisan: string) => void;
+    onClear: () => void;
+}
 
-    const toggleCategory = (category: string) => {
-        setSelectedCategories(prev =>
-            prev.includes(category)
-                ? prev.filter(c => c !== category)
-                : [...prev, category]
-        )
-    }
+interface FilterOptionProps {
+    checked: boolean;
+    label: string;
+    onClick: () => void;
+    type?: "checkbox" | "radio";
+}
 
-    const visibleArtisans = showAllArtisans ? artisans : artisans.slice(0, 5)
-
+function FilterOption({
+    checked,
+    label,
+    onClick,
+    type = "checkbox",
+}: FilterOptionProps) {
     return (
-        <div className="space-y-8">
-            {/* Categories */}
+        <button
+            type="button"
+            onClick={onClick}
+            className="flex items-center gap-3 text-left"
+        >
+            <span
+                className={cn(
+                    "flex h-5 w-5 items-center justify-center border border-gray-300 bg-white transition-colors",
+                    type === "radio" ? "rounded-full" : "rounded",
+                    checked && "border-[var(--color-primary)] bg-[var(--color-primary)] text-white"
+                )}
+            >
+                {checked && <Check className="h-3 w-3" />}
+            </span>
+            <span className="text-sm font-medium">{label}</span>
+        </button>
+    );
+}
+
+export function ProductFilters({
+    categories,
+    locations,
+    artisans,
+    selectedCategories,
+    selectedLocation,
+    selectedArtisan,
+    onToggleCategory,
+    onSelectLocation,
+    onSelectArtisan,
+    onClear,
+}: ProductFiltersProps) {
+    return (
+        <div className="space-y-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
             <div>
                 <h3 className="font-heading text-lg font-bold mb-4">Categorías</h3>
-                <div className="space-y-2">
+                <div className="space-y-3">
                     {categories.map((category) => (
-                        <div key={category} className="flex items-center space-x-2">
-                            <button
-                                onClick={() => toggleCategory(category)}
-                                className={cn(
-                                    "flex h-5 w-5 items-center justify-center rounded border border-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                                    selectedCategories.includes(category) ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-white" : "bg-white"
-                                )}
-                            >
-                                {selectedCategories.includes(category) && <Check className="h-3 w-3" />}
-                            </button>
-                            <label
-                                className="text-sm font-medium leading-none cursor-pointer"
-                                onClick={() => toggleCategory(category)}
-                            >
-                                {category}
-                            </label>
-                        </div>
+                        <FilterOption
+                            key={category}
+                            checked={selectedCategories.includes(category)}
+                            label={category}
+                            onClick={() => onToggleCategory(category)}
+                        />
                     ))}
                 </div>
             </div>
 
-            {/* Price Range */}
-            <div>
-                <h3 className="font-heading text-lg font-bold mb-4">Precio</h3>
-                <div className="space-y-2">
-                    {prices.map((price) => (
-                        <div key={price} className="flex items-center space-x-2">
-                            <div className="h-4 w-4 rounded-full border border-gray-300" />
-                            <span className="text-sm">{price}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Locations */}
             <div>
                 <h3 className="font-heading text-lg font-bold mb-4">Ubicación</h3>
-                <div className="space-y-2">
-                    {locations.map((loc) => (
-                        <div key={loc} className="flex items-center space-x-2">
-                            <div className="h-4 w-4 rounded border border-gray-300" />
-                            <span className="text-sm">{loc}</span>
-                        </div>
+                <div className="space-y-3">
+                    <FilterOption
+                        checked={selectedLocation === ""}
+                        label="Todas"
+                        onClick={() => onSelectLocation("")}
+                        type="radio"
+                    />
+                    {locations.map((location) => (
+                        <FilterOption
+                            key={location}
+                            checked={selectedLocation === location}
+                            label={location}
+                            onClick={() => onSelectLocation(selectedLocation === location ? "" : location)}
+                            type="radio"
+                        />
                     ))}
                 </div>
             </div>
 
-            {/* Artisans */}
             <div>
                 <h3 className="font-heading text-lg font-bold mb-4">Artesanos</h3>
-                <div className="space-y-2">
-                    {visibleArtisans.map((artisan) => (
-                        <div key={artisan} className="flex items-center space-x-2">
-                            <div className="h-4 w-4 rounded border border-gray-300" />
-                            <span className="text-sm">{artisan}</span>
-                        </div>
+                <div className="space-y-3 max-h-64 overflow-y-auto pr-1">
+                    <FilterOption
+                        checked={selectedArtisan === ""}
+                        label="Todos"
+                        onClick={() => onSelectArtisan("")}
+                        type="radio"
+                    />
+                    {artisans.map((artisan) => (
+                        <FilterOption
+                            key={artisan}
+                            checked={selectedArtisan === artisan}
+                            label={artisan}
+                            onClick={() => onSelectArtisan(selectedArtisan === artisan ? "" : artisan)}
+                            type="radio"
+                        />
                     ))}
                 </div>
-                {artisans.length > 5 && (
-                    <button
-                        onClick={() => setShowAllArtisans(!showAllArtisans)}
-                        className="mt-2 text-sm text-[var(--color-primary)] hover:underline"
-                    >
-                        {showAllArtisans ? "Ver menos" : `Ver todos (${artisans.length})`}
-                    </button>
-                )}
             </div>
 
-            <Button variant="outline" className="w-full">
-                Limpiar Filtros
+            <Button variant="outline" className="w-full" onClick={onClear}>
+                Limpiar filtros
             </Button>
         </div>
-    )
+    );
 }

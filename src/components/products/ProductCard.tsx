@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
 import { Heart, ShoppingCart } from "lucide-react"
@@ -5,6 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Product } from "@/data/products"
 import { cn } from "@/lib/utils"
+import { useCart } from "@/contexts/CartContext"
+import { useState } from "react"
 
 interface ProductCardProps {
     product: Product
@@ -12,6 +16,26 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className }: ProductCardProps) {
+    const { addItem } = useCart()
+    const [isAdding, setIsAdding] = useState(false)
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        
+        setIsAdding(true)
+        addItem({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            color: product.color
+        })
+        
+        // Feedback visual
+        setTimeout(() => setIsAdding(false), 500)
+    }
+
     return (
         <div className={cn("group relative flex flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md", className)}>
             <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
@@ -59,7 +83,13 @@ export function ProductCard({ product, className }: ProductCardProps) {
                                 ${product.price.toLocaleString("es-MX")}
                             </p>
                         </div>
-                        <Button size="icon" variant="secondary" className="rounded-full relative z-20">
+                        <Button 
+                            size="icon" 
+                            variant="secondary" 
+                            className="rounded-full relative z-20"
+                            onClick={handleAddToCart}
+                            disabled={isAdding}
+                        >
                             <ShoppingCart className="h-5 w-5" />
                             <span className="sr-only">Añadir al carrito</span>
                         </Button>

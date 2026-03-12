@@ -22,9 +22,11 @@ export interface Product {
     material?: string;
 }
 
+export const ARTISAN_PLACEHOLDER_IMAGE = "/images/artisan-placeholder.svg";
+
 // ─── Artesanos ──────────────────────────────────────────────────
 
-const artisans: Record<string, Artisan> = {
+export const artisans: Record<string, Artisan> = {
     maria: {
         id: "a1",
         name: "María López Pineda",
@@ -32,7 +34,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.4361, lng: -95.0198 },
         estimatedDelivery: "5-7 días hábiles",
         story: "María aprendió el arte de la cadentilla de su abuela a los 12 años. Cada puntada geométrica representa las flores y la fauna del Istmo. Su taller da empleo a 5 mujeres de la comunidad y ha preservado técnicas que datan de más de 100 años.",
-        image: "/images/artisan-maria.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     juana: {
         id: "a2",
@@ -41,7 +43,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.3254, lng: -95.2395 },
         estimatedDelivery: "5-7 días hábiles",
         story: "Juana es conocida por sus vibrantes bordados florales. Utiliza técnicas heredadas del siglo XIX, preservando el estilo clásico de la Tehuana. Cada pieza le toma entre 3 y 6 meses de trabajo dedicado.",
-        image: "/images/artisan-juana.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     garcia: {
         id: "a3",
@@ -50,7 +52,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.4361, lng: -95.0198 },
         estimatedDelivery: "5-7 días hábiles",
         story: "Con más de 50 años de tradición, los Hermanos García funden el oro y la plata para crear joyas que han adornado a generaciones de mujeres zapotecas. Su taller es un referente de la filigrana oaxaqueña.",
-        image: "/images/artisan-garcia.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     rosa: {
         id: "a4",
@@ -59,7 +61,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.2081, lng: -94.9847 },
         estimatedDelivery: "7-10 días hábiles",
         story: "Rosa recolecta y seca su propia palma. Sus tejidos son famosos por su durabilidad y por los patrones que imitan las olas del mar. Enseña su oficio a jóvenes de la comunidad Huave.",
-        image: "/images/artisan-rosa.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     doña_petrona: {
         id: "a5",
@@ -68,7 +70,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.3180, lng: -95.2220 },
         estimatedDelivery: "5-7 días hábiles",
         story: "Doña Petrona es una de las bordadoras más reconocidas de San Blas Atempa. Su especialidad son los huipiles de terciopelo con hilos de seda, piezas que pueden tardar hasta un año en completarse.",
-        image: "/images/artisan-petrona.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     elena: {
         id: "a6",
@@ -77,7 +79,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.5530, lng: -95.1000 },
         estimatedDelivery: "5-7 días hábiles",
         story: "Elena combina la tradición zapoteca con diseños contemporáneos. Sus prendas han sido exhibidas en ferias de moda artesanal en la Ciudad de México y Oaxaca capital.",
-        image: "/images/artisan-elena.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     don_felix: {
         id: "a7",
@@ -86,7 +88,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.4670, lng: -94.8330 },
         estimatedDelivery: "7-10 días hábiles",
         story: "Don Félix es maestro joyero de tercera generación. Se especializa en réplicas de joyas prehispánicas y en la técnica de granulado, creando texturas únicas en cada pieza de oro y plata.",
-        image: "/images/artisan-felix.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     carmen: {
         id: "a8",
@@ -95,7 +97,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.4361, lng: -95.0198 },
         estimatedDelivery: "5-7 días hábiles",
         story: "Carmen es tejedora de hamacas y manteles desde hace 30 años. Utiliza algodón orgánico teñido con tintes naturales como cochinilla e índigo, manteniendo vivos los colores de la tradición.",
-        image: "/images/artisan-carmen.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     lucia: {
         id: "a9",
@@ -104,7 +106,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.3254, lng: -95.2395 },
         estimatedDelivery: "5-7 días hábiles",
         story: "Lucía comenzó bordando pequeños accesorios y hoy crea resplandores completos. Su trabajo ha sido galardonado en tres concursos estatales de artesanía textil.",
-        image: "/images/artisan-lucia.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
     angel: {
         id: "a10",
@@ -113,7 +115,7 @@ const artisans: Record<string, Artisan> = {
         coordinates: { lat: 16.3180, lng: -95.2220 },
         estimatedDelivery: "5-7 días hábiles",
         story: "Ángel es tallador de jícaras y creador de artesanías en madera y barro. Sus piezas decorativas representan la cosmogonía zapoteca con un estilo único y detallado.",
-        image: "/images/artisan-angel.jpg"
+        image: ARTISAN_PLACEHOLDER_IMAGE
     },
 };
 
@@ -129,7 +131,7 @@ export const products: Product[] = [
         price: 3500,
         category: "Huipil",
         artisan: artisans.maria,
-        image: "/images/huipil-rojo.jpg",
+        image: "/images/catalogo/huipil-rojo.jpg",
         description: "Huipil tradicional con intrincado trabajo de cadentilla sobre satín rojo. Las figuras geométricas representan flores y aves del Istmo. Pieza de gala perfecta para fiestas y velas.",
         isVerified: true,
         color: "Rojo",
@@ -138,14 +140,14 @@ export const products: Product[] = [
     },
     {
         id: "2",
-        name: "Huipil Corto Geométrico Azul",
+        name: "Huipil Corto Geométrico",
         price: 1800,
         category: "Huipil",
         artisan: artisans.maria,
-        image: "/images/huipil-geom.jpg",
-        description: "Versión moderna y corta del huipil tradicional, perfecta para combinar con jeans o faldas casuales. Mantiene la técnica auténtica de la cadentilla en tonos azules.",
+        image: "/images/catalogo/huipil-geom.png",
+        description: "Versión moderna y corta del huipil tradicional, perfecta para combinar con jeans o faldas casuales. Mantiene la técnica auténtica de la cadentilla en tonos vibrantes.",
         isVerified: true,
-        color: "Azul",
+        color: "Multicolor",
         measurements: "Ancho: 55cm, Largo: 45cm",
         material: "Algodón"
     },
@@ -155,7 +157,7 @@ export const products: Product[] = [
         price: 6500,
         category: "Huipil",
         artisan: artisans.doña_petrona,
-        image: "/images/huipil-terciopelo-negro.jpg",
+        image: "/images/catalogo/huipil-terciopelo-negro.png",
         description: "Majestuoso huipil de terciopelo negro bordado con hilos de seda en tonos vibrantes. Flores tropicales y guacamayas adornan esta pieza que tarda hasta 8 meses en completarse.",
         isVerified: true,
         color: "Negro",
@@ -168,7 +170,7 @@ export const products: Product[] = [
         price: 950,
         category: "Huipil",
         artisan: artisans.elena,
-        image: "/images/huipil-manta.jpg",
+        image: "/images/catalogo/huipil-manta.png",
         description: "Huipil de uso diario sobre tela de manta con bordados sencillos en punto de cruz. Cómodo y fresco, ideal para el clima cálido del Istmo.",
         isVerified: true,
         color: "Blanco",
@@ -181,7 +183,7 @@ export const products: Product[] = [
         price: 3200,
         category: "Huipil",
         artisan: artisans.maria,
-        image: "/images/huipil-verde.jpg",
+        image: "/images/catalogo/huipil-verde.png",
         description: "Huipil de gala con cadentilla sobre satín verde esmeralda. Los motivos florales en hilo dorado y blanco crean un contraste elegante y llamativo.",
         isVerified: true,
         color: "Verde",
@@ -194,7 +196,7 @@ export const products: Product[] = [
         price: 4800,
         category: "Huipil",
         artisan: artisans.doña_petrona,
-        image: "/images/huipil-floral.jpg",
+        image: "/images/catalogo/huipil-floral.png",
         description: "Explosión de color en cada pétalo. Este huipil presenta un jardín bordado a mano con más de 15 tonos diferentes de hilo de seda sobre base de satín morado.",
         isVerified: true,
         color: "Morado",
@@ -207,7 +209,7 @@ export const products: Product[] = [
         price: 3800,
         category: "Huipil",
         artisan: artisans.juana,
-        image: "/images/huipil-rosa.jpg",
+        image: "/images/catalogo/huipil-rosa.png",
         description: "Huipil de satín rosa pálido con bordados de aves tropicales y flores de buganvilia. Cada ave es bordada con detalle de pluma por pluma.",
         isVerified: true,
         color: "Rosa",
@@ -220,7 +222,7 @@ export const products: Product[] = [
         price: 1200,
         category: "Huipil",
         artisan: artisans.elena,
-        image: "/images/huipil-infantil.jpg",
+        image: "/images/catalogo/huipil-infantil.png",
         description: "Adorable huipil de cadentilla para niñas. Perfecto para que las nuevas generaciones vistan la tradición desde pequeñas. Disponible en varias tallas infantiles.",
         isVerified: true,
         color: "Amarillo",
@@ -233,7 +235,7 @@ export const products: Product[] = [
         price: 7200,
         category: "Huipil",
         artisan: artisans.doña_petrona,
-        image: "/images/huipil-guinda.jpg",
+        image: "/images/catalogo/huipil-guinda.png",
         description: "Pieza de colección en terciopelo guinda. Bordado con hilos metálicos dorados y flores de magnolia. Una obra maestra textil que representa meses de trabajo.",
         isVerified: true,
         color: "Guinda",
@@ -246,7 +248,7 @@ export const products: Product[] = [
         price: 2200,
         category: "Huipil",
         artisan: artisans.elena,
-        image: "/images/huipil-bicolor.jpg",
+        image: "/images/catalogo/huipil-bicolor.png",
         description: "Diseño contemporáneo que fusiona la cadentilla tradicional con cortes modernos. Base en blanco y negro con detalles geométricos naranja.",
         isVerified: true,
         color: "Blanco y Negro",
@@ -259,7 +261,7 @@ export const products: Product[] = [
         price: 9500,
         category: "Huipil",
         artisan: artisans.juana,
-        image: "/images/huipil-novia.jpg",
+        image: "/images/catalogo/huipil-novia.png",
         description: "El huipil más especial: confeccionado para novias del Istmo. Blanco inmaculado con bordados de flores de azahar en hilo plateado. Cada pieza es única y personalizada.",
         isVerified: true,
         color: "Blanco",
@@ -272,7 +274,7 @@ export const products: Product[] = [
         price: 3300,
         category: "Huipil",
         artisan: artisans.maria,
-        image: "/images/huipil-naranja.jpg",
+        image: "/images/catalogo/huipil-naranja.png",
         description: "Vibrante huipil en satín naranja con cadentilla en tonos tierra y blanco. Los patrones representan la flor de cempasúchil, símbolo de la vida y la celebración.",
         isVerified: true,
         color: "Naranja",
@@ -289,7 +291,7 @@ export const products: Product[] = [
         price: 4200,
         category: "Ropa",
         artisan: artisans.juana,
-        image: "/images/vestido-negro.jpg",
+        image: "/images/catalogo/vestido-negro.png",
         description: "Vestido completo de terciopelo negro con bordados florales multicolores. El resplandor de las flores sobre el fondo oscuro evoca la elegancia de las noches del Istmo.",
         isVerified: true,
         color: "Negro",
@@ -302,7 +304,7 @@ export const products: Product[] = [
         price: 2800,
         category: "Ropa",
         artisan: artisans.juana,
-        image: "/images/falda-enredo.jpg",
+        image: "/images/catalogo/falda-enredo.png",
         description: "Falda de enredo con encaje de holán almidonado. Pieza esencial de la vestimenta de gala que aporta volumen y movimiento al caminar.",
         isVerified: true,
         color: "Morado",
@@ -315,7 +317,7 @@ export const products: Product[] = [
         price: 1600,
         category: "Ropa",
         artisan: artisans.lucia,
-        image: "/images/blusa-tehuana.jpg",
+        image: "/images/catalogo/blusa-tehuana.png",
         description: "Blusa de manta con bordado floral en el pecho y mangas. Diseño cómodo para uso diario que mantiene la esencia de la vestimenta regional.",
         isVerified: true,
         color: "Blanco",
@@ -328,7 +330,7 @@ export const products: Product[] = [
         price: 1500,
         category: "Ropa",
         artisan: artisans.lucia,
-        image: "/images/resplandor-dorado.jpg",
+        image: "/images/catalogo/resplandor-dorado.png",
         description: "El resplandor es el tocado que enmarca el rostro de la Tehuana. Este modelo en encaje dorado es perfecto para fiestas y ceremonias tradicionales.",
         isVerified: true,
         color: "Dorado",
@@ -341,7 +343,7 @@ export const products: Product[] = [
         price: 8500,
         category: "Ropa",
         artisan: artisans.doña_petrona,
-        image: "/images/vestido-rojo-completo.jpg",
+        image: "/images/catalogo/vestido-rojo-completo.png",
         description: "Conjunto completo de Tehuana: huipil, falda de enredo y resplandor. Todo bordado a mano con motivos florales. La pieza estrella para las Velas del Istmo.",
         isVerified: true,
         color: "Rojo",
@@ -354,7 +356,7 @@ export const products: Product[] = [
         price: 2200,
         category: "Ropa",
         artisan: artisans.juana,
-        image: "/images/falda-holan-blanco.jpg",
+        image: "/images/catalogo/falda-holan-blanco.png",
         description: "Falda larga con holán plisado y almidonado. Elegante en su sencillez, perfecta para combinar con cualquier huipil de gala.",
         isVerified: true,
         color: "Blanco",
@@ -367,7 +369,7 @@ export const products: Product[] = [
         price: 750,
         category: "Ropa",
         artisan: artisans.elena,
-        image: "/images/camisa-manta.jpg",
+        image: "/images/catalogo/camisa-manta.png",
         description: "Camisa de manta bordada con motivos geométricos zapotecas en el pecho. Fresca y elegante para el hombre que valora las raíces.",
         isVerified: true,
         color: "Beige",
@@ -376,37 +378,24 @@ export const products: Product[] = [
     },
     {
         id: "20",
-        name: "Rebozo de Seda Natural",
+        name: "Chaqueta Lari Raíz",
         price: 3600,
         category: "Ropa",
-        artisan: artisans.carmen,
-        image: "/images/rebozo-seda.jpg",
-        description: "Rebozo tejido en telar de cintura con seda natural. Los flecos trenzados a mano tardaron dos semanas en completarse. Pieza de vestir y de abrigo.",
+        artisan: artisans.elena,
+        image: "/images/catalogo/chaqueta-lari-raiz.png",
+        description: "Chaqueta contemporánea con bordados tradicionales. Fusión perfecta entre moda moderna y artesanía ancestral. Pieza única de la colección Lari Raíz.",
         isVerified: true,
-        color: "Azul Índigo",
-        measurements: "Largo: 220cm, Ancho: 60cm",
-        material: "Seda Natural"
+        color: "Negro",
+        measurements: "Disponible en S, M, L",
+        material: "Algodón y Bordado a Mano"
     },
     {
         id: "21",
-        name: "Vestido Casual Bordado Corto",
-        price: 1900,
-        category: "Ropa",
-        artisan: artisans.elena,
-        image: "/images/vestido-casual.jpg",
-        description: "Vestido corto de algodón con bordados florales en el escote. Diseño moderno que lleva la tradición a lo cotidiano. Perfecto para el día a día.",
-        isVerified: true,
-        color: "Terracota",
-        measurements: "Disponible en S, M, L",
-        material: "Algodón Orgánico"
-    },
-    {
-        id: "22",
         name: "Huaraches Bordados de Piel",
         price: 650,
         category: "Ropa",
         artisan: artisans.angel,
-        image: "/images/huaraches.jpg",
+        image: "/images/catalogo/huaraches.png",
         description: "Huaraches artesanales de piel con tiras bordadas con motivos zapotecas. Suela de caucho natural, cómodos y duraderos.",
         isVerified: true,
         color: "Café",
@@ -418,120 +407,108 @@ export const products: Product[] = [
     // JOYERÍA (10)
     // ══════════════════════════════════════════════════
     {
-        id: "23",
+        id: "22",
         name: "Collar de Filigrana de Oro",
         price: 1500,
         category: "Joyería",
         artisan: artisans.garcia,
-        image: "/images/collar-filigrana.jpg",
+        image: "/images/catalogo/collar-filigrana.png",
         description: "Collar clásico de filigrana con baño de oro. Eslabones y colgantes trabajados uno a uno, creando una pieza ligera pero visualmente impactante.",
         isVerified: true,
         color: "Dorado",
         material: "Baño de Oro 14k sobre Plata"
     },
     {
-        id: "24",
+        id: "23",
         name: "Aretes de Filigrana Largos",
         price: 850,
         category: "Joyería",
         artisan: artisans.garcia,
-        image: "/images/aretes-filigrana.jpg",
+        image: "/images/catalogo/aretes-filigrana.png",
         description: "Aretes largos de filigrana con diseño de flores colgantes. Livianos y elegantes, el complemento perfecto para cualquier atuendo del Istmo.",
         isVerified: true,
         color: "Plateado",
         material: "Plata .925"
     },
     {
-        id: "25",
+        id: "24",
         name: "Pulsera de Cadena Tejida",
         price: 680,
         category: "Joyería",
         artisan: artisans.don_felix,
-        image: "/images/pulsera-tejida.jpg",
+        image: "/images/catalogo/pulsera-tejida.png",
         description: "Pulsera de eslabones tejidos a mano en plata. Diseño grueso y robusto inspirado en las cadenas tradicionales que portan las mujeres juchitecas.",
         isVerified: true,
         color: "Plateado",
         material: "Plata .925"
     },
     {
-        id: "26",
+        id: "25",
         name: "Collar de Monedas Centenario",
         price: 12500,
         category: "Joyería",
         artisan: artisans.don_felix,
-        image: "/images/collar-monedas.jpg",
+        image: "/images/catalogo/collar-monedas.png",
         description: "El collar más emblemático de la Tehuana. Cadena gruesa de oro con monedas de centenario auténticas. Símbolo de estatus y tradición.",
         isVerified: true,
         color: "Dorado",
         material: "Oro 14k y Monedas Auténticas"
     },
     {
-        id: "27",
+        id: "26",
         name: "Anillo de Filigrana con Coral",
         price: 950,
         category: "Joyería",
         artisan: artisans.garcia,
-        image: "/images/anillo-coral.jpg",
+        image: "/images/catalogo/anillo-coral.png",
         description: "Anillo de plata con trabajo de filigrana y piedra de coral rojo engarzada. Diseño que fusiona la joyería prehispánica con la influencia colonial.",
         isVerified: true,
         color: "Plateado con Rojo",
         material: "Plata .925 y Coral"
     },
     {
-        id: "28",
+        id: "27",
         name: "Aretes de Ámbar y Plata",
         price: 720,
         category: "Joyería",
         artisan: artisans.don_felix,
-        image: "/images/aretes-ambar.jpg",
+        image: "/images/catalogo/aretes-ambar.png",
         description: "Aretes redondos con ámbar natural de Chiapas engarzado en bisel de plata. Cada pieza de ámbar es única en su tonalidad y transparencia.",
         isVerified: true,
         color: "Ámbar",
         material: "Plata .925 y Ámbar Natural"
     },
     {
-        id: "29",
+        id: "28",
         name: "Gargantilla de Plata Martillada",
         price: 1200,
         category: "Joyería",
         artisan: artisans.garcia,
-        image: "/images/gargantilla-plata.jpg",
+        image: "/images/catalogo/gargantilla-plata.png",
         description: "Gargantilla rígida de plata con acabado martillado a mano. Diseño minimalista que destaca la textura artesanal del metal.",
         isVerified: true,
         color: "Plateado",
         material: "Plata .925"
     },
     {
-        id: "30",
-        name: "Pulsera de Filigrana con Charms",
-        price: 980,
-        category: "Joyería",
-        artisan: artisans.garcia,
-        image: "/images/pulsera-charms.jpg",
-        description: "Pulsera de cadena fina con pequeños dijes de filigrana: una tortuga, un corazón, una flor y una mariposa. Cada dije hecho a mano.",
-        isVerified: true,
-        color: "Dorado",
-        material: "Baño de Oro sobre Plata"
-    },
-    {
-        id: "31",
+        id: "29",
         name: "Broche de Filigrana Mariposa",
         price: 580,
         category: "Joyería",
         artisan: artisans.don_felix,
-        image: "/images/broche-mariposa.jpg",
+        image: "/images/catalogo/broche-mariposa.png",
         description: "Broche decorativo en forma de mariposa con alas de filigrana. Perfecto para sujetar rebozos o como accesorio de solapa.",
         isVerified: true,
         color: "Plateado",
         material: "Plata .925"
     },
     {
-        id: "32",
+        id: "30",
         name: "Cadena Gruesa Trenzada",
         price: 2800,
         category: "Joyería",
         artisan: artisans.don_felix,
-        image: "/images/cadena-trenzada.jpg",
+        image: "/images/catalogo/cadena-trenzada.png",
         description: "Cadena gruesa con eslabones trenzados a mano, típica de la joyería istmeña. Imponente y elegante, es la base de muchos collares tradicionales.",
         isVerified: true,
         color: "Dorado",
@@ -542,48 +519,48 @@ export const products: Product[] = [
     // ACCESORIOS (8)
     // ══════════════════════════════════════════════════
     {
-        id: "33",
+        id: "31",
         name: "Bolsa Tejida de Palma",
         price: 850,
         category: "Accesorios",
         artisan: artisans.rosa,
-        image: "/images/bolsa-palma.jpg",
+        image: "/images/catalogo/bolsa-palma.png",
         description: "Bolsa tote tejida a mano con palma natural. Espaciosa y resistente, ideal para uso diario o para la playa. Incluye forro interior de tela.",
         isVerified: true,
         color: "Beige",
         material: "Palma Natural"
     },
     {
-        id: "34",
+        id: "32",
         name: "Abanico Bordado de Seda",
         price: 450,
         category: "Accesorios",
         artisan: artisans.lucia,
-        image: "/images/abanico-seda.jpg",
+        image: "/images/catalogo/abanico-seda.png",
         description: "Abanico de varillas de madera con tela de seda bordada con flores. Accesorio indispensable en las fiestas del Istmo por el calor tropical.",
         isVerified: true,
         color: "Rojo",
         material: "Seda y Madera"
     },
     {
-        id: "35",
+        id: "33",
         name: "Morral de Ixtle Bicolor",
         price: 620,
         category: "Accesorios",
         artisan: artisans.rosa,
-        image: "/images/morral-ixtle.jpg",
+        image: "/images/catalogo/morral-ixtle.png",
         description: "Morral tejido con fibra de ixtle (maguey) en dos tonos. Ligero y ecológico, con correa larga cruzada. Ideal para llevar lo esencial.",
         isVerified: true,
         color: "Verde y Natural",
         material: "Fibra de Ixtle"
     },
     {
-        id: "36",
+        id: "34",
         name: "Cinturón Bordado con Hebilla",
         price: 380,
         category: "Accesorios",
         artisan: artisans.elena,
-        image: "/images/cinturon-bordado.jpg",
+        image: "/images/catalogo/cinturon-bordado.png",
         description: "Cinturón de piel con franja central bordada con motivos geométricos. Hebilla de latón envejecido. Unisex.",
         isVerified: true,
         color: "Café",
@@ -591,12 +568,12 @@ export const products: Product[] = [
         material: "Piel y Bordado"
     },
     {
-        id: "37",
+        id: "35",
         name: "Bolsa Clutch de Terciopelo",
         price: 750,
         category: "Accesorios",
         artisan: artisans.doña_petrona,
-        image: "/images/clutch-terciopelo.jpg",
+        image: "/images/catalogo/clutch-terciopelo.png",
         description: "Clutch de terciopelo con bordado floral a mano. Forro de satín con bolsillo interno. El accesorio perfecto para acompañar un huipil de gala.",
         isVerified: true,
         color: "Negro",
@@ -604,12 +581,12 @@ export const products: Product[] = [
         material: "Terciopelo Bordado"
     },
     {
-        id: "38",
+        id: "36",
         name: "Canasta de Palma Grande",
         price: 520,
         category: "Accesorios",
         artisan: artisans.rosa,
-        image: "/images/canasta-palma.jpg",
+        image: "/images/catalogo/canasta-palma.png",
         description: "Canasta tejida de palma de tamaño grande. Perfecta para ir al mercado o como elemento decorativo. Asas reforzadas.",
         isVerified: true,
         color: "Natural",
@@ -617,12 +594,12 @@ export const products: Product[] = [
         material: "Palma Natural"
     },
     {
-        id: "39",
+        id: "37",
         name: "Faja Tejida en Telar",
         price: 280,
         category: "Accesorios",
         artisan: artisans.carmen,
-        image: "/images/faja-telar.jpg",
+        image: "/images/catalogo/faja-telar.png",
         description: "Faja tejida en telar de cintura con diseños de grecas. Tradicionalmente usada para sujetar la falda de enredo.",
         isVerified: true,
         color: "Multicolor",
@@ -630,12 +607,12 @@ export const products: Product[] = [
         material: "Algodón Teñido"
     },
     {
-        id: "40",
+        id: "38",
         name: "Sombrero de Palma Pintado",
         price: 350,
         category: "Accesorios",
         artisan: artisans.angel,
-        image: "/images/sombrero-palma.jpg",
+        image: "/images/catalogo/sombrero-palma.png",
         description: "Sombrero de palma con ala ancha, pintado a mano con motivos de flores tropicales. Protección solar con estilo artesanal.",
         isVerified: true,
         color: "Natural con Pintura",
@@ -644,15 +621,15 @@ export const products: Product[] = [
     },
 
     // ══════════════════════════════════════════════════
-    // HOGAR (5)
+    // HOGAR (3)
     // ══════════════════════════════════════════════════
     {
-        id: "41",
+        id: "39",
         name: "Mantel Individual Bordado (Set x4)",
         price: 680,
         category: "Hogar",
         artisan: artisans.carmen,
-        image: "/images/mantel-individual.jpg",
+        image: "/images/catalogo/mantel-individual.png",
         description: "Set de 4 manteles individuales bordados con flores del Istmo. Cada mantel tiene un diseño ligeramente diferente. Lavables a máquina.",
         isVerified: true,
         color: "Blanco con Bordado",
@@ -660,12 +637,12 @@ export const products: Product[] = [
         material: "Algodón Bordado"
     },
     {
-        id: "42",
+        id: "40",
         name: "Hamaca Matrimonial de Algodón",
         price: 2400,
         category: "Hogar",
         artisan: artisans.carmen,
-        image: "/images/hamaca-matrimonial.jpg",
+        image: "/images/catalogo/hamaca-matrimonial.png",
         description: "Hamaca matrimonial tejida en telar con algodón orgánico. Resistente para soportar hasta 200 kg. Teñida con tintes naturales de cochinilla.",
         isVerified: true,
         color: "Rosa / Natural",
@@ -673,42 +650,16 @@ export const products: Product[] = [
         material: "Algodón Orgánico"
     },
     {
-        id: "43",
+        id: "41",
         name: "Jícara Decorativa Tallada",
         price: 320,
         category: "Hogar",
         artisan: artisans.angel,
-        image: "/images/jicara-tallada.jpg",
+        image: "/images/catalogo/jicara-tallada.png",
         description: "Jícara (bowl de calabaza) tallada a mano con motivos zapotecas. Puede usarse como centro de mesa o contenedor decorativo.",
         isVerified: true,
         color: "Negro Gravado",
         measurements: "Diámetro: 18cm",
         material: "Calabaza Natural Tallada"
-    },
-    {
-        id: "44",
-        name: "Camino de Mesa Tejido",
-        price: 580,
-        category: "Hogar",
-        artisan: artisans.carmen,
-        image: "/images/camino-mesa.jpg",
-        description: "Camino de mesa tejido en telar de cintura con diseño de rombos. Colores teñidos con índigo y cochinilla. Pieza única.",
-        isVerified: true,
-        color: "Azul y Rojo",
-        measurements: "Largo: 150cm, Ancho: 35cm",
-        material: "Algodón Teñido Natural"
-    },
-    {
-        id: "45",
-        name: "Set de Servilletas Bordadas (x6)",
-        price: 420,
-        category: "Hogar",
-        artisan: artisans.lucia,
-        image: "/images/servilletas-bordadas.jpg",
-        description: "Set de 6 servilletas de tela bordadas en las esquinas con flores de diferentes colores. Perfectas para una mesa con identidad.",
-        isVerified: true,
-        color: "Blanco con Multicolor",
-        measurements: "40cm x 40cm (cada una)",
-        material: "Lino y Bordado"
     },
 ];

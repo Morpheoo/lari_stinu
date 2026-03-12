@@ -1,17 +1,6 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Montserrat } from "next/font/google";
 import "./globals.css";
-
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-});
+import { CartProvider } from "@/contexts/CartContext";
 
 export const metadata: Metadata = {
   title: "Lari Stinu | Moda Artesanal del Istmo",
@@ -25,12 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body
-        className={`${dmSerif.variable} ${montserrat.variable} antialiased`}
-      >
-        {children}
+      <body className="antialiased">
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
 }
-

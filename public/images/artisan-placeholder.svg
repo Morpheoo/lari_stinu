@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Artesano de Lari Stinu</title>
+  <desc id="desc">Ilustracion decorativa para perfiles de artesanos sin fotografia.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f7ede0" />
+      <stop offset="100%" stop-color="#ead7b7" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#a12d2f" />
+      <stop offset="100%" stop-color="#b8833a" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)" rx="36" />
+  <g fill="none" stroke="#a12d2f" stroke-linecap="round" stroke-width="10">
+    <path d="M80 146h480" opacity=".2" />
+    <path d="M80 494h480" opacity=".2" />
+    <path d="M112 98c36 22 68 22 104 0s68-22 104 0 68 22 104 0 68-22 104 0" opacity=".35" />
+    <path d="M112 542c36-22 68-22 104 0s68 22 104 0 68-22 104 0 68 22 104 0" opacity=".35" />
+  </g>
+  <circle cx="320" cy="222" r="92" fill="url(#accent)" opacity=".95" />
+  <path fill="#fff4e0" d="M194 458c16-90 76-136 126-136s110 46 126 136z" />
+  <path fill="#2f1c1b" d="M252 200c0-43 31-74 68-74s68 31 68 74c0 31-16 57-68 57s-68-26-68-57z" />
+  <path fill="#fff4e0" d="M234 468c8-77 46-126 86-126s78 49 86 126z" opacity=".35" />
+  <circle cx="320" cy="222" r="58" fill="#fff4e0" />
+  <path fill="#2f1c1b" d="M266 212c2-38 27-60 54-60s52 22 54 60c-8-14-25-24-54-24s-46 10-54 24z" />
+  <g fill="#a12d2f">
+    <circle cx="292" cy="222" r="6" />
+    <circle cx="348" cy="222" r="6" />
+  </g>
+  <path d="M296 254c10 8 38 8 48 0" fill="none" stroke="#b8833a" stroke-linecap="round" stroke-width="8" />
+  <g fill="none" stroke="#b8833a" stroke-width="14">
+    <path d="M194 430c48-28 84-42 126-42s78 14 126 42" stroke-linecap="round" />
+    <path d="M160 470h320" opacity=".4" />
+  </g>
+  <text x="320" y="570" fill="#7f5a2b" font-family="Georgia, serif" font-size="34" text-anchor="middle">
+    Comunidad Artesana
+  </text>
+</svg>
